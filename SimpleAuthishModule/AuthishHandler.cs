@@ -1,36 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using System.Configuration;
-using System.Linq;
-using System.Text;
 using System.Web;
+using log4net;
 
 namespace SimpleAuthishModule
 {
     public class AuthishHandler : IHttpHandler
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(AuthishHandler));
+        private static readonly string AuthishPassword = ConfigurationManager.AppSettings["AuthishPassword"];
+
         public void ProcessRequest(HttpContext context)
         {
-            if(PasswordIsCorrect(context.Request.Params))
+            var rawUrl = context.Request.RawUrl;
+            if (PasswordIsCorrect(context.Request.Params))
             {
                 SessionHelper.SetAuthenticated(context);
-                context.Response.Redirect(context.Request.RawUrl, false);    
+                context.Response.Redirect(rawUrl, false);
             }
             else
             {
-                context.Response.Write("<!DOCTYPE html PUBLIC \" -//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html><head><head/><body><div style='margin: 0 auto; width: 300px; padding-top: 300px;'>" 
-                +"<form method='post' action='" + context.Request.RawUrl + "'>"
-                + "<input type='password' name='password' /><input type='submit' value='Logg inn' /> </form></div></body></html>");
+                const string fontSize = " style='font-size: 32px'";
+                context.Response.Write("<!DOCTYPE html PUBLIC \" -//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">" +
+                                       "<html><head>" +
+                                       "<head/><body>" +
+                                       "<div style='margin: 0 auto; width: 300px; padding-top: 300px'>"
+                + "<form method='post' action='" + rawUrl + "'>"
+                + "<input type='password' name='password' autofocus " + fontSize + "/><input type='submit' value='Logg inn'" + fontSize + "/>" +
+                "</form>" +
+                (string.IsNullOrEmpty(AuthishPassword)
+                    ? "<div style='color: red'>Password not set in appsettings - please contact administrator</div>" : "") +
+                "</div></body></html>");
             }
-            
-            
         }
 
         private bool PasswordIsCorrect(NameValueCollection parameters)
         {
-            return parameters["password"] != null && parameters["password"] == ConfigurationManager.AppSettings["AuthishPassword"];
+            var password = parameters["password"];
+            var passwordIsCorrect = !string.IsNullOrEmpty(password) && password == AuthishPassword;
+            if (!passwordIsCorrect)
+            {
+                Log.Info(string.Format("Authish logon failed, user password: '{0}', authish wants: '{1}", password, AuthishPassword));
+            }
 
+            return passwordIsCorrect;
         }
 
         public bool IsReusable
