@@ -22,10 +22,10 @@ namespace SimpleAuthishModule
             {
                 const string fontSize = " style='font-size: 32px'";
                 context.Response.Write("<!DOCTYPE html PUBLIC \" -//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">" +
-                                       "<html><head>" + 
+                                       "<html><head>" +
                                        "<head/><body>" +
-                                       "<div style='margin: 0 auto; width: 300px; padding-top: 300px'>" 
-                +"<form method='post' action='" + rawUrl + "'>"
+                                       "<div style='margin: 0 auto; width: 300px; padding-top: 300px'>"
+                + "<form method='post' action='" + rawUrl + "'>"
                 + "<input type='password' name='password' autofocus " + fontSize + "/><input type='submit' value='Logg inn'" + fontSize + "/>" +
                 "</form>" +
                 (string.IsNullOrEmpty(AuthishPassword)
