@@ -1,16 +1,15 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SimpleAuthishModule")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("AuthishModule")]
+[assembly: AssemblyDescription("A quick-and-dirty login-wrapper to your ASP.NET project")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("None")]
-[assembly: AssemblyProduct("SimpleAuthishModule")]
-[assembly: AssemblyCopyright("Copyright © None 2012")]
+[assembly: AssemblyCompany("Mads Nyborg, Thomas Svensen")]
+[assembly: AssemblyProduct("AuthishModule")]
+[assembly: AssemblyCopyright("Copyright © None 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +31,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.0.0")]
-[assembly: AssemblyFileVersion("1.1.0.0")]
+[assembly: AssemblyVersion("1.2.1.0")]
+[assembly: AssemblyFileVersion("1.2.1.0")]
