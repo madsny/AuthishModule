@@ -28,7 +28,7 @@ namespace AuthishModule
                 (string.IsNullOrEmpty(AuthishPassword)
                     ? "<div style='color: red'>Password not set in appsettings - please contact administrator</div>"
                     : "<form method='post' action='" + rawUrl + "'>" +
-                        "<input name='username' style=width: 0 px>user</input>" +
+                        "<input name='username' style='display: none' />" +
                         "<input type='password' name='password' autofocus " + fontSize + "/><input type='submit' value='Log in'" + fontSize + "/>" +
                       "</form>" +
                     "") +
