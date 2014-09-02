@@ -6,5 +6,5 @@ unavailable to everyone on the internet, and can probably be hacked quite easily
 
 Setup is done by:
  * Adding SimpleAuthishModule to system.webServer > Modules
- * Setting "AuthisPassword" in appSettings to your password of choice
+ * Setting "AuthishPassword" in appSettings to your password of choice
  
