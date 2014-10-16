@@ -13,7 +13,7 @@ namespace AuthishModule
         public void ProcessRequest(HttpContext context)
         {
             var rawUrl = context.Request.RawUrl;
-            if (PasswordIsCorrect(context.Request.Params))
+            if (PasswordIsCorrect(context.Request.Params, context.Request.Headers))
             {
                 SessionHelper.SetAuthenticated(context);
                 context.Response.Redirect(rawUrl, false);    
@@ -36,9 +36,13 @@ namespace AuthishModule
             }
         }
 
-        private bool PasswordIsCorrect(NameValueCollection parameters)
+        private bool PasswordIsCorrect(NameValueCollection parameters, NameValueCollection headers)
         {
             var password = parameters["password"];
+            if (string.IsNullOrEmpty(password))
+            {
+                password = headers["Authish"];
+            }
             var passwordIsCorrect = !string.IsNullOrEmpty(password) && password == AuthishPassword;
             if (!passwordIsCorrect)
             {
