@@ -11,9 +11,9 @@ Setup is done by:
 
 Normally, user will be challenged with a password prompt. But you can also authenticate
 by passing the password in a request header named "Authish". This can easily be added to,
-e.g., Chrome by using (ModHeader)[https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj].
-But this feature is mostly added to enable load testing or automated verification tools
-to bypass authentication without having to support cookies.
+e.g., Chrome by using [ModHeader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj).
+But this feature is mostly added to enable load testing (via tools like [Netling](https://github.com/hallatore/Netling)
+or automated verification tools to bypass authentication without having to support cookies.
 
 We do not auto-update web.config with the above because:
  * You typically don't want this in your dev-setup. We add it via web.config transformations in our deploy server (Octopus!).
