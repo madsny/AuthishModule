@@ -9,7 +9,8 @@
     <projectUrl>https://github.com/madsny/AuthishModule</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added a dummy user name to help password managers saving the password.</releaseNotes>
+    <releaseNotes>Added the ability to authenticate using a special 'Authish' header, with the password set there.
+This makes it easier to run automated requests to the pages, not requiring cookies and session state.</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>authentication asp.net</tags>
   </metadata>

@@ -15,7 +15,10 @@ namespace AuthishModule
         private void context_PostAcquireRequestState(object sender, EventArgs e)
         {
             HttpApplication app = (HttpApplication)sender;
-            if(app.Context.Handler is IRequiresSessionState && !SessionHelper.IsAuthenticated(app.Session))
+
+            if(app.Context.Handler is IRequiresSessionState &&
+                !SessionHelper.IsAuthenticated(app.Session) &&
+                !ValidationService.PasswordIsCorrect(app.Context.Request.Headers["Authish"]))
             {
                 app.Context.Handler = new AuthishHandler();
             }
