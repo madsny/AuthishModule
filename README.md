@@ -8,7 +8,13 @@ It can probably be hacked quite easily, so do not trust it for anything really s
 Setup is done by:
  * Adding SimpleAuthishModule to web.config (system.webServer > Modules)
  * Setting "AuthishPassword" in appSettings to your password of choice
- 
+
+Normally, user will be challenged with a password prompt. But you can also authenticate
+by passing the password in a request header named "Authish". This can easily be added to,
+e.g., Chrome by using (ModHeader)[https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj].
+But this feature is mostly added to enable load testing or automated verification tools
+to bypass authentication without having to support cookies.
+
 We do not auto-update web.config with the above because:
  * You typically don't want this in your dev-setup. We add it via web.config transformations in our deploy server (Octopus!).
  * You may prefer (as we do) to have appSettings in a separate file referenced from web.config
