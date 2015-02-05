@@ -6,8 +6,28 @@ for making development and demo environments unavailable to anyone on the intern
 It can probably be hacked quite easily, so do not trust it for anything really sensitive.
 
 Setup is done by:
+
+ * Install AuthishModule from nuget
+
+```
+Install-Package AuthishModule
+```
+
  * Adding SimpleAuthishModule to web.config (system.webServer > Modules)
+
+```
+<system.webServer>
+  <modules>
+    <add name="AuthishModule" type="AuthishModule.BlockingModule, AuthishModule,Version=1.3.0.0" preCondition="managedHandler" />
+  </modules>
+</system.webServer>
+```
+
  * Setting "AuthishPassword" in appSettings to your password of choice
+
+```
+<add key="AuthishPassword" value="your-password" />
+```
 
 Normally, user will be challenged with a password prompt. But you can also authenticate
 by passing the password in a request header named "Authish". This can easily be added to,
