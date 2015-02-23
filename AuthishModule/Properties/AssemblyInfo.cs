@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("AuthishModule")]
 [assembly: AssemblyDescription("A quick-and-dirty login-wrapper to your ASP.NET project")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Mads Nyborg, Thomas Svensen")]
+[assembly: AssemblyCompany("Mads Nyborg, Thomas Svensen, Eirik Stien")]
 [assembly: AssemblyProduct("AuthishModule")]
 [assembly: AssemblyCopyright("Copyright © None 2014")]
 [assembly: AssemblyTrademark("")]
