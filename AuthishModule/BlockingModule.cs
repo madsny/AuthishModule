@@ -18,7 +18,8 @@ namespace AuthishModule
             if(app.Context.Handler is IRequiresSessionState &&
                 !SessionHelper.IsAuthenticated(app.Session) &&
                 !ValidationService.PasswordIsCorrect(app.Context.Request.Headers["Authish"]) && 
-                !ValidationService.PathIsWhitelisted(app.Context.Request.Path))
+                !ValidationService.PathIsWhitelisted(app.Context.Request.Path) &&
+                !app.Context.Request.IsLocal)
             {
                 app.Context.Handler = new AuthishHandler();
             }
