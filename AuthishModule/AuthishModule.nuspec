@@ -9,9 +9,11 @@
     <projectUrl>https://github.com/madsny/AuthishModule</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added the ability to authenticate using a special 'Authish' header, with the password set there.
-This makes it easier to run automated requests to the pages, not requiring cookies and session state.</releaseNotes>
-    <copyright>Copyright 2014</copyright>
+    <releaseNotes>Updated Log4Net to version (1.2.13).</releaseNotes>
+    <copyright>Copyright 2016</copyright>
     <tags>authentication asp.net</tags>
+    <dependencies>
+      <dependency id="log4net" version="[2.0.3]" />
+    </dependencies>
   </metadata>
 </package>
