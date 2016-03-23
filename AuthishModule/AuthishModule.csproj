@@ -93,6 +93,7 @@
     <Content Include="AuthishModule.nuspec">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="howto-push-nuget.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
