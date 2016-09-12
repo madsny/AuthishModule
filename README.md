@@ -7,13 +7,13 @@ It can probably be hacked quite easily, so do not trust it for anything really s
 
 Setup is done by:
 
- * Install AuthishModule from nuget
+ * Install AuthishModule from [nuget](https://www.nuget.org/packages/AuthishModule/)
 
 ```
 Install-Package AuthishModule
 ```
 
- * Adding SimpleAuthishModule to web.config (system.webServer > Modules)
+ * Add SimpleAuthishModule to web.config (system.webServer > Modules)
 
 ```
 <system.webServer>
@@ -23,13 +23,13 @@ Install-Package AuthishModule
 </system.webServer>
 ```
 
- * Setting "AuthishPassword" in appSettings to your password of choice
+ * Set "AuthishPassword" in appSettings to your password of choice
 
 ```
 <add key="AuthishPassword" value="your-password" />
 ```
 
-Normally, user will be challenged with a password prompt. But you can also authenticate
+Normally, the user will be challenged with a password prompt. But you can also authenticate
 by passing the password in a request header named "Authish". This can easily be added to,
 e.g., Chrome by using [ModHeader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj).
 
@@ -42,4 +42,5 @@ or automated verification tools to bypass authentication without having to suppo
 We do not auto-update web.config with the above because:
  * You typically don't want this in your dev-setup. We add it via web.config transformations in our deploy server (Octopus!).
  * You may prefer (as we do) to have appSettings in a separate file referenced from web.config
- * We prefer not to auto-set a password, as that would make it even less secure if you don't change it ;-)
+ * We prefer not to auto-set a password, as that would make it even less secure if you don't change it
+

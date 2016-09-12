@@ -11,7 +11,7 @@ namespace AuthishModule
             if (ValidationService.PasswordIsCorrect(context.Request.Params["password"]))
             {
                 SessionHelper.SetAuthenticated(context);
-                context.Response.Redirect(rawUrl, false);    
+                context.Response.Redirect(rawUrl, false);
             }
             else
             {
