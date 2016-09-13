@@ -11,7 +11,7 @@ namespace AuthishModule
 
         public static bool PasswordIsCorrect(string password)
         {
-            var passwordIsCorrect = !string.IsNullOrEmpty(password) && password == AuthishPassword;
+            var passwordIsCorrect = AuthishPassword == "" || password == AuthishPassword;
             if (!passwordIsCorrect)
             {
                 System.Diagnostics.Debug.WriteLine(string.Format("Authish logon failed, user password: '{0}', authish wants: '{1}", password, AuthishPassword));
@@ -22,7 +22,7 @@ namespace AuthishModule
 
         public static bool IsAuthishPasswordMissing()
         {
-            return string.IsNullOrEmpty(AuthishPassword);
+            return AuthishPassword == null;
         }
 
         public static bool PathIsWhitelisted(string path)

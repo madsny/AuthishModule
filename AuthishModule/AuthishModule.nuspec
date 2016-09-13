@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/madsny/AuthishModule</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Removed Log4Net since it was creating version conflicts.</releaseNotes>
+    <releaseNotes>Removed Log4Net since it was creating version conflicts, interpreting empty string password as disabling Authish</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>authentication asp.net</tags>
   </metadata>
