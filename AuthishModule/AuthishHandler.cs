@@ -23,7 +23,7 @@ namespace AuthishModule
                 (ValidationService.IsAuthishPasswordMissing()
                     ? "<div style='color: red'>AuthishPassword not in appsettings - please contact administrator</div>"
                     : "<form method='post' action='" + rawUrl + "'>" +
-                        "<input name='username' style='display: none' />" +
+                        "<input name='username' style='display: none' value='authish' />" +
                         "<input type='password' name='password' autofocus " + fontSize + "/><input type='submit' value='Log in'" + fontSize + "/>" +
                       "</form>" +
                     "") +
