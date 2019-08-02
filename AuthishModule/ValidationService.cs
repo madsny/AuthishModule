@@ -7,7 +7,9 @@ namespace AuthishModule
     static class ValidationService
     {
         private static readonly string AuthishPassword = ConfigurationManager.AppSettings["AuthishPassword"];
-        private static readonly string[] AuthishWhitelistedPaths = (ConfigurationManager.AppSettings["AuthishWhitelistedPaths"] ?? "").Split(',');
+        private static readonly string[] AuthishWhitelistedPaths = (ConfigurationManager.AppSettings["AuthishWhitelistedPaths"] ?? "").Replace(" ", "").Split(',');
+        private static readonly string[] AuthishWhitelistedStartOfPaths = (ConfigurationManager.AppSettings["AuthishWhitelistedStartOfPaths"] ?? "").Replace(" ", "").Split(',');
+
 
         public static bool PasswordIsCorrect(string password)
         {
@@ -27,7 +29,9 @@ namespace AuthishModule
 
         public static bool PathIsWhitelisted(string path)
         {
-            return AuthishWhitelistedPaths.Any(p => p.Equals(path, StringComparison.InvariantCultureIgnoreCase));
+            var isWhitelistedPath = AuthishWhitelistedPaths.Any(p => p.Equals(path, StringComparison.InvariantCultureIgnoreCase));
+            var isWhitelistedStartOfPath = AuthishWhitelistedStartOfPaths.Any(p => path.StartsWith(p, StringComparison.InvariantCultureIgnoreCase));
+            return isWhitelistedPath || isWhitelistedStartOfPath;
         }
     }
 }
