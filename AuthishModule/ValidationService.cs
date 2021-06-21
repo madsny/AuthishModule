@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 
@@ -7,8 +8,17 @@ namespace AuthishModule
     static class ValidationService
     {
         private static readonly string AuthishPassword = ConfigurationManager.AppSettings["AuthishPassword"];
-        private static readonly string[] AuthishWhitelistedPaths = (ConfigurationManager.AppSettings["AuthishWhitelistedPaths"] ?? "").Replace(" ", "").Split(',');
-        private static readonly string[] AuthishWhitelistedStartOfPaths = (ConfigurationManager.AppSettings["AuthishWhitelistedStartOfPaths"] ?? "").Replace(" ", "").Split(',');
+
+        private static readonly string[] AuthishWhitelistedPaths = 
+            (ConfigurationManager.AppSettings["AuthishWhitelistedPaths"] ?? "")
+                .Replace(" ", "")
+                .Split(',');
+
+        private static readonly List<string> AuthishWhitelistedStartOfPaths = 
+            (ConfigurationManager.AppSettings["AuthishWhitelistedStartOfPaths"] ?? "")
+                .Replace(" ", "").Split(',')
+                .Where(s => s != "")
+                .ToList();
 
 
         public static bool PasswordIsCorrect(string password)
